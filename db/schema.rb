@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_22_025521) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_22_051911) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,4 +21,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_22_025521) do
     t.index ["uuid"], name: "index_house_viewings_on_uuid", unique: true
   end
 
+  create_table "rooms", force: :cascade do |t|
+    t.bigint "house_viewing_id", null: false
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["house_viewing_id"], name: "index_rooms_on_house_viewing_id"
+  end
+
+  add_foreign_key "rooms", "house_viewings"
 end
