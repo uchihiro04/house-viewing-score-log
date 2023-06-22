@@ -3,4 +3,8 @@ require:
   - rubocop-performance
 
 AllCops:
-    NewCops: enable
+  NewCops: enable
+  Exclude:
+    - 'bin/**/*'
+    - 'config/**/*'
+    - 'config.ru'
