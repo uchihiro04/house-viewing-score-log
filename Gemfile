@@ -59,12 +59,12 @@ group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'web-console'
 
+  gem 'html2slim', github: 'slim-template/html2slim'
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
   gem 'slim_lint', require: false
-  gem "slim-rails"
-  gem "html2slim", github: "slim-template/html2slim"
+  gem 'slim-rails'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
