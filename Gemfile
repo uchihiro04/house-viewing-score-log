@@ -63,6 +63,8 @@ group :development do
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
   gem 'slim_lint', require: false
+  gem "slim-rails"
+  gem "html2slim", github: "slim-template/html2slim"
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
