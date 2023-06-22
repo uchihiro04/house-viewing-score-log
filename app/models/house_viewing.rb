@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class HouseViewing < ApplicationRecord
   validates :uuid, presence: true, uniqueness: true
   before_validation :create_uuid
