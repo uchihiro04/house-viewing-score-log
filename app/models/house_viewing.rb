@@ -1,0 +1,2 @@
+class HouseViewing < ApplicationRecord
+end
