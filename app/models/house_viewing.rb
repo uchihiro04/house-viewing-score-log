@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class HouseViewing < ApplicationRecord
+  has_many :rooms
+  validates :uuid, presence: true, uniqueness: true
   before_create :set_uuid
 
   def set_uuid
