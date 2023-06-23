@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
 class HouseViewing < ApplicationRecord
-  validates :uuid, presence: true, uniqueness: true
-  before_validation :create_uuid
+  before_create :create_uuid
 
   def create_uuid
-    uuid = SecureRandom.uuid
-    self.uuid = uuid
+    self.uuid = loop do
+      generated_uuid = SecureRandom.uuid
+      break generated_uuid unless self.class.exists?(uuid: generated_uuid)
+    end
   end
 end
