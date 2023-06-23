@@ -5,7 +5,9 @@ class HouseViewing < ApplicationRecord
   validates :uuid, presence: true, uniqueness: true
   before_create :set_uuid
   after_create :create_rooms
-
+  
+  VIEWING_ROOMS = 10
+  
   def set_uuid
     self.uuid = loop do
       generated_uuid = SecureRandom.uuid
@@ -15,7 +17,7 @@ class HouseViewing < ApplicationRecord
 
   def create_rooms
     house_viewing_id = id
-    10.times do |n|
+    VIEWING_ROOMS.times do |n|
       Room.create(name: "#{n + 1}件目", house_viewing_id:)
     end
   end
