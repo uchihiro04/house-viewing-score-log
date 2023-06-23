@@ -15,9 +15,8 @@ class HouseViewing < ApplicationRecord
   end
 
   def create_rooms
-    house_viewing_id = id
     DEFAULT_ROOMS_COUNT.times do |n|
-      Room.create(name: "#{n + 1}件目", house_viewing_id:)
+      rooms.create!(name: "#{n + 1}件目")
     end
   end
 end
