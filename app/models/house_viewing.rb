@@ -6,7 +6,7 @@ class HouseViewing < ApplicationRecord
   before_create :set_uuid
   after_create :create_rooms
   
-  VIEWING_ROOMS = 10
+  DEFAULT_ROOMS_COUNT = 10
   
   def set_uuid
     self.uuid = loop do
@@ -17,7 +17,7 @@ class HouseViewing < ApplicationRecord
 
   def create_rooms
     house_viewing_id = id
-    VIEWING_ROOMS.times do |n|
+    DEFAULT_ROOMS_COUNT.times do |n|
       Room.create(name: "#{n + 1}件目", house_viewing_id:)
     end
   end
