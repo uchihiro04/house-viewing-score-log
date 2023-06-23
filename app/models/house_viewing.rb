@@ -2,12 +2,11 @@
 
 class HouseViewing < ApplicationRecord
   has_many :rooms, dependent: :destroy
-  validates :uuid, presence: true, uniqueness: true
   before_create :set_uuid
   after_create :create_rooms
-  
+
   DEFAULT_ROOMS_COUNT = 10
-  
+
   def set_uuid
     self.uuid = loop do
       generated_uuid = SecureRandom.uuid
