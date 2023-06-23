@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class HouseViewing < ApplicationRecord
-  has_many :rooms
+  has_many :rooms, dependent: :destroy
   validates :uuid, presence: true, uniqueness: true
   before_create :set_uuid
   after_create :create_rooms
@@ -14,9 +14,9 @@ class HouseViewing < ApplicationRecord
   end
 
   def create_rooms
-    house_viewing_id = self.id
+    house_viewing_id = id
     10.times do |n|
-      Room.create(name: "#{n + 1}件目", house_viewing_id: house_viewing_id)
+      Room.create(name: "#{n + 1}件目", house_viewing_id:)
     end
   end
 end
