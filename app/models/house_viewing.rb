@@ -2,6 +2,7 @@
 
 class HouseViewing < ApplicationRecord
   has_many :rooms, dependent: :destroy
+
   before_create :set_uuid
   after_create :create_rooms
 
