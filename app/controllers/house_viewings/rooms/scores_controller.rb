@@ -3,7 +3,9 @@
 module HouseViewings
   module Rooms
     class ScoresController < ApplicationController
-      def new; end
+      def new
+        @room = Room.find(params[:room_id])
+      end
     end
   end
 end
