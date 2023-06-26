@@ -1,2 +1,10 @@
 h1 内見したお部屋一覧
-
+table
+  tbody
+    - @rooms.each do |room|
+      tr
+        td
+          = link_to
+            =room.name
+p 1件以上スコアの入力が完了していると、スコアを見ることができます。
+p URLを共有すると、複数人で採点ができます。
