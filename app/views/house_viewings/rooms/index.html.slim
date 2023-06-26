@@ -1,2 +1,8 @@
 h1 内見したお部屋一覧
-
+table
+  tbody
+    - @rooms.each do |room|
+      tr
+        td
+          = link_to
+            =room.name
