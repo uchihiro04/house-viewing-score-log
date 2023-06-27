@@ -7,7 +7,7 @@ h1
   p 分かりやすい名前に変更しましょう。
 
   = f.fields_for :score do |score_fields|
-    = score_fields.label :reviewer_name
+    h2 入力者（名前・ニックネーム）
     = score_fields.text_field :reviewer_name
     h2 リビング
     .flex
