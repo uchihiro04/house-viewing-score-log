@@ -9,3 +9,59 @@ h1
   = f.fields_for :score do |score_fields|
     = score_fields.label :reviewer_name
     = score_fields.text_field :reviewer_name
+    h2 リビング
+    .flex
+      p 良い
+      p 悪い
+    - 5.times do |i|
+      = score_fields.label :living, i + 1
+      = score_fields.radio_button :living, i + 1
+    h2 収納
+    .flex
+      p 充実
+      p 不足
+    - 5.times do |i|
+      = score_fields.label :storage, i + 1
+      = score_fields.radio_button :storage, i + 1
+    h2 キッチン
+    .flex
+      p 良い
+      p 悪い
+    - 5.times do |i|
+      = score_fields.label :kitchen, i + 1
+      = score_fields.radio_button :kitchen, i + 1
+    h2 お風呂
+    .flex
+      p 良い
+      p 悪い
+    - 5.times do |i|
+      = score_fields.label :bath, i + 1
+      = score_fields.radio_button :bath, i + 1
+    h2 トイレ
+    .flex
+      p 良い
+      p 悪い
+    - 5.times do |i|
+      = score_fields.label :toilet, i + 1
+      = score_fields.radio_button :toilet, i + 1
+    h2 設備
+    .flex
+      p 充実
+      p 不足
+    - 5.times do |i|
+      = score_fields.label :equipment, i + 1
+      = score_fields.radio_button :equipment, i + 1
+    h2 周辺環境
+    .flex
+      p 良い
+      p 悪い
+    - 5.times do |i|
+      = score_fields.label :surroundings, i + 1
+      = score_fields.radio_button :surroundingss, i + 1
+    h2 家賃
+    .flex
+      p 割高
+      p 割安
+    - 5.times do |i|
+      = score_fields.label :rent, i + 1
+      = score_fields.radio_button :rent, i + 1
