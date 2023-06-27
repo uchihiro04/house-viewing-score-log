@@ -1,2 +1,5 @@
 h1
   = "#{@room.name}を入力する"
+= form_with url: new_house_viewing_room_score_path, local: true do |f|
+  = f.text_field :name, value: @room.name
+  p 分かりやすい名前に変更しましょう。
