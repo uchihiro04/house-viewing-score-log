@@ -12,6 +12,8 @@ class HouseViewing < ApplicationRecord
     uuid
   end
 
+  private
+
   def set_uuid
     self.uuid = loop do
       generated_uuid = SecureRandom.uuid
