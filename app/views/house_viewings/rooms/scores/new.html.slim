@@ -1,4 +1,4 @@
 h1
   = "#{@room.name}を入力する"
-= form_with url: new_house_viewing_room_score_path, local: true do |form|
+= form_with url: house_viewing_room_scores_path, local: true do |form|
   = render partial: 'form', locals: { form: }
