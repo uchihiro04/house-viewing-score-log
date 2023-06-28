@@ -1,11 +1,11 @@
-= form.fields_for :room do |room_fields|
-  = room_fields.text_field :name, value: @room.name
+= form_with model: [@house_viewing, @room, @score], local: true do |form|
+  = form.fields_for :room do |room_fields|
+    = room_fields.text_field :name, value: @room.name
 
-p 分かりやすい名前に変更しましょう。
+  p 分かりやすい名前に変更しましょう。
 
-= form.fields_for :score do |score_fields|
   h2 入力者（名前・ニックネーム）
-  = score_fields.text_field :reviewer_name
+  = form.text_field :reviewer_name
   - evaluation_items.each do |evaluation_item|
     h2
       = evaluation_item
@@ -13,7 +13,7 @@ p 分かりやすい名前に変更しましょう。
       p = good_evaluation_name(evaluation_item)
       p = bad_evaluation_name(evaluation_item)
     - 5.times do |i|
-      = score_fields.label evaluation_item.to_sym, i + 1
-      = score_fields.radio_button evaluation_item.to_sym, i + 1
+      = form.label evaluation_item.to_sym, i + 1
+      = form.radio_button evaluation_item.to_sym, i + 1
   .block
     = button_tag 'スコアを保存する', type: 'submit'

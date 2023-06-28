@@ -4,12 +4,15 @@ module HouseViewings
   module Rooms
     class ScoresController < ApplicationController
       def new
-        house_viewing = HouseViewing.find_by!(uuid: params[:house_viewing_uuid])
-        @room = house_viewing.rooms.find(params[:room_id])
+        @house_viewing = HouseViewing.find_by!(uuid: params[:house_viewing_uuid])
+        @room = @house_viewing.rooms.find(params[:room_id])
+        @score = Score.new
       end
 
       def create
-        @room = Room.find(params[:room_id])
+        @house_viewing = HouseViewing.find_by!(uuid: params[:house_viewing_uuid])
+        @room = @house_viewing.rooms.find(params[:room_id])
+        @room.update!(name: params[:score][:room][:name]) if @room.name != params[:score][:room][:name]
         @score = @room.scores.new(score_params)
 
         if @score.save
