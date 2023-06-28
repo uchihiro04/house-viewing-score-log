@@ -34,7 +34,7 @@ linters:
 
   LineLength:
     enabled: true
-    max: 80
+    max: 120
 
   RedundantDiv:
     enabled: true
