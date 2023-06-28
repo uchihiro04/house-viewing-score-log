@@ -4,7 +4,6 @@ table
     - @rooms.each do |room|
       tr
         td
-          = link_to
-            =room.name
+          = link_to room.name, new_house_viewing_room_score_path(room_id: room.id)
 p 1件以上スコアの入力が完了していると、スコアを見ることができます。
 p URLを共有すると、複数人で採点ができます。
