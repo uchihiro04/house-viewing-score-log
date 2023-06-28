@@ -16,16 +16,12 @@ module HouseViewings
         end
       end
 
-      def specific_evaluation_names?(evaluation_item)
-        SPECIFIC_EVALUATION_NAMES.key?(evaluation_item.to_sym)
+      def good_evaluation_name(evaluation_item)
+        SPECIFIC_EVALUATION_NAMES.dig(evaluation_item.to_sym, :good) || '良い'
       end
 
-      def specific_good_evaluation_name(evaluation_item)
-        SPECIFIC_EVALUATION_NAMES[evaluation_item.to_sym][:good]
-      end
-
-      def specific_bad_evaluation_name(evaluation_item)
-        SPECIFIC_EVALUATION_NAMES[evaluation_item.to_sym][:bad]
+      def bad_evaluation_name(evaluation_item)
+        SPECIFIC_EVALUATION_NAMES.dig(evaluation_item.to_sym, :bad) || '悪い'
       end
     end
   end

@@ -10,14 +10,8 @@ p 分かりやすい名前に変更しましょう。
     h2
       = evaluation_item
     .flex
-      - if specific_evaluation_names?(evaluation_item)
-        p
-          = specific_good_evaluation_name(evaluation_item)
-        p
-          = specific_bad_evaluation_name(evaluation_item)
-      - else
-        p 良い
-        p 悪い
+      p = good_evaluation_name(evaluation_item)
+      p = bad_evaluation_name(evaluation_item)
     - 5.times do |i|
       = score_fields.label evaluation_item.to_sym, i + 1
       = score_fields.radio_button evaluation_item.to_sym, i + 1
