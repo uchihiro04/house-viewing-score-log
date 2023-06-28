@@ -11,4 +11,6 @@ html
     = javascript_importmap_tags
   body
     main.container.mx-auto.mt-28.px-5
+      - if flash.notice.present?
+        = flash.notice
       = yield
