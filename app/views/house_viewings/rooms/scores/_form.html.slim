@@ -8,6 +8,8 @@
     h2 入力者一覧
     - if @score.persisted?
       = link_to '新規入力', new_house_viewing_room_score_path(room_id: @room.id)
+  - if @room.scores.blank?
+    p スコアを入力した人はいません    
   - @room.scores.each do |score|
     ul
       .flex
