@@ -1,0 +1,5 @@
+.flex
+  = link_to '<', house_viewing_rooms_path
+  h1
+    = "#{@room.name}を編集する"
+= render partial: 'form'

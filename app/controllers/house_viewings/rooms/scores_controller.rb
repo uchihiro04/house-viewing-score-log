@@ -3,11 +3,15 @@
 module HouseViewings
   module Rooms
     class ScoresController < ApplicationController
-      before_action :set_house_viewing, only: %i[new create]
-      before_action :set_room, only: %i[new create]
+      before_action :set_house_viewing, only: %i[new create edit]
+      before_action :set_room, only: %i[new create edit]
 
       def new
         @score = Score.new
+      end
+
+      def edit
+        @score = @room.scores.find(params[:id])
       end
 
       def create
