@@ -6,13 +6,14 @@
 
   .flex
     h2 入力者一覧
-    = link_to '新規入力', new_house_viewing_room_score_path(room_id: @room.id)
+    - if @score.persisted?
+      = link_to '新規入力', new_house_viewing_room_score_path(room_id: @room.id)
   - @room.scores.each do |score|
     ul
       .flex
         li = score.reviewer_name
         = link_to '編集'
-        
+
   h2 入力者（名前・ニックネーム）
   = form.text_field :reviewer_name
   - evaluation_items.each do |evaluation_item|
