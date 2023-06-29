@@ -3,16 +3,16 @@
 module HouseViewings
   module Rooms
     class ScoresController < ApplicationController
+      before_action :set_house_viewing, only: %i[new create]
+      before_action :set_room, only: %i[new create]
+
       def new
-        @house_viewing = HouseViewing.find_by!(uuid: params[:house_viewing_uuid])
-        @room = @house_viewing.rooms.find(params[:room_id])
         @score = Score.new
       end
 
       def create
-        @house_viewing = HouseViewing.find_by!(uuid: params[:house_viewing_uuid])
-        @room = @house_viewing.rooms.find(params[:room_id])
-        @room.update!(name: params[:score][:room][:name]) if @room.name != params[:score][:room][:name]
+        room_name = params[:score][:room][:name]
+        @room.update!(name: room_name) if @room.name != room_name
         @score = @room.scores.new(score_params)
 
         if @score.save
@@ -24,8 +24,24 @@ module HouseViewings
 
       private
 
+      def set_house_viewing
+        @house_viewing = HouseViewing.find_by!(uuid: params[:house_viewing_uuid])
+      end
+
+      def set_room
+        @room = @house_viewing.rooms.find(params[:room_id])
+      end
+
       def score_params
-        params.require(:score).permit(:reviewer_name, :living_room, :storage, :kitchen, :bath, :toilet, :equipment, :surroundings, :rent)
+        params.require(:score).permit(:reviewer_name,
+                                      :living_room,
+                                      :storage,
+                                      :kitchen,
+                                      :bath,
+                                      :toilet,
+                                      :equipment,
+                                      :surroundings,
+                                      :rent)
       end
     end
   end
