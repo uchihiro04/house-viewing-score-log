@@ -3,16 +3,14 @@
 module HouseViewings
   module Rooms
     class ScoresController < ApplicationController
-      before_action :set_house_viewing, only: %i[new create edit update]
-      before_action :set_room, only: %i[new create edit update]
+      before_action :set_house_viewing, :set_room, only: %i[new create edit update]
+      before_action :set_score, only: %i[edit update]
 
       def new
         @score = Score.new
       end
 
-      def edit
-        @score = @room.scores.find(params[:id])
-      end
+      def edit; end
 
       def create
         room_name = params[:score][:room][:name]
@@ -29,7 +27,6 @@ module HouseViewings
       def update
         room_name = params[:score][:room][:name]
         @room.update!(name: room_name) if @room.name != room_name
-        @score = @room.scores.find(params[:id])
         if @score.update(score_params)
           redirect_to house_viewing_rooms_path, notice: 'スコアを更新しました。'
         else
@@ -45,6 +42,10 @@ module HouseViewings
 
       def set_room
         @room = @house_viewing.rooms.find(params[:room_id])
+      end
+
+      def set_score
+        @score = @room.scores.find(params[:id])
       end
 
       def score_params
