@@ -12,14 +12,14 @@ module HouseViewings
 
       def create
         room_name = params[:score][:room][:name]
-        @room.update!(name: room_name) if @room.name != room_name
-        @score = @room.scores.new(score_params)
-
-        if @score.save
+        Score.transaction do
+          @score = @room.scores.new(score_params)
+          @room.update!(name: room_name) if @room.name != room_name
+          @score.save!
           redirect_to house_viewing_rooms_path, notice: 'スコアを登録しました。'
-        else
-          render :new, status: :unprocessable_entity
         end
+      rescue ActiveRecord::RecordInvalid
+        render :new, status: :unprocessable_entity
       end
 
       private
