@@ -20,7 +20,8 @@
     ul
       .flex
         li = score.reviewer_name
-        = link_to '編集', edit_house_viewing_room_score_path(@house_viewing, @room, score)
+        - if score.persisted?
+          = link_to '編集', edit_house_viewing_room_score_path(@house_viewing, @room, score)
 
   h2 入力者（名前・ニックネーム）
   = form.text_field :reviewer_name
