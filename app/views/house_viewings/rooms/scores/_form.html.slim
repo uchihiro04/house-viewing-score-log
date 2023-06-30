@@ -16,11 +16,11 @@
       = link_to '新規入力', new_house_viewing_room_score_path(room_id: @room.id)
   - if @room.scores.blank?
     p スコアを入力した人はいません
-  - @room.scores.each do |score|
-    ul
-      .flex
-        li = score.reviewer_name
-        - if score.persisted?
+  ul
+    - @room.scores.each do |score|
+      - if score.persisted?
+        .flex
+          li = score.reviewer_name
           = link_to '編集', edit_house_viewing_room_score_path(@house_viewing, @room, score)
 
   h2 入力者（名前・ニックネーム）
