@@ -3,8 +3,8 @@
 module HouseViewings
   module Rooms
     class ScoresController < ApplicationController
-      before_action :set_house_viewing, only: %i[new create edit]
-      before_action :set_room, only: %i[new create edit]
+      before_action :set_house_viewing, only: %i[new create edit update]
+      before_action :set_room, only: %i[new create edit update]
 
       def new
         @score = Score.new
@@ -23,6 +23,17 @@ module HouseViewings
           redirect_to house_viewing_rooms_path, notice: 'スコアを登録しました。'
         else
           render :new, status: :unprocessable_entity
+        end
+      end
+
+      def update
+        room_name = params[:score][:room][:name]
+        @room.update!(name: room_name) if @room.name != room_name
+        @score = @room.scores.find(params[:id])
+        if @score.update(score_params)
+          redirect_to house_viewing_rooms_path, notice: 'スコアを更新しました。'
+        else
+          render :edit, status: :unprocessable_entity
         end
       end
 
