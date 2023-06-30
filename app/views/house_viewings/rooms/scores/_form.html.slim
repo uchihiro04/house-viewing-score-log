@@ -1,3 +1,9 @@
+- [@room, @score].each do |object|
+  - if object.errors.present?
+    ul
+      - object.errors.full_messages.each do |message|
+       li = message
+
 = form_with model: [@house_viewing, @room, @score], local: true do |form|
   = form.fields_for :room do |room_fields|
     = room_fields.text_field :name, value: @room.name
