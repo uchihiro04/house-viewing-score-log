@@ -1,0 +1,25 @@
+- [room, score].each do |object|
+  - if object.errors.present?
+    ul
+      - object.errors.full_messages.each do |message|
+       li = message
+
+= form_with model: [house_viewing, room, score], local: true do |form|
+  = form.fields_for :room do |room_fields|
+    = room_fields.text_field :name, value: room.name
+
+  p 分かりやすい名前に変更しましょう。
+
+  h2 入力者（名前・ニックネーム）
+  = form.text_field :reviewer_name
+  - evaluation_items.each do |evaluation_item|
+    h2
+      = evaluation_item
+    .flex
+      p = good_evaluation_name(evaluation_item)
+      p = bad_evaluation_name(evaluation_item)
+    - 5.times do |i|
+      = form.label evaluation_item.to_sym, i + 1
+      = form.radio_button evaluation_item.to_sym, i + 1
+  .block
+    = form.submit 'スコアを保存する'

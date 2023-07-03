@@ -8,6 +8,12 @@ class HouseViewing < ApplicationRecord
 
   DEFAULT_ROOMS_COUNT = 10
 
+  def to_param
+    uuid
+  end
+
+  private
+
   def set_uuid
     self.uuid = loop do
       generated_uuid = SecureRandom.uuid
