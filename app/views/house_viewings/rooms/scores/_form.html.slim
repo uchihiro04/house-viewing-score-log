@@ -22,4 +22,4 @@
       = form.label evaluation_item.to_sym, i + 1
       = form.radio_button evaluation_item.to_sym, i + 1
   .block
-    = button_tag 'スコアを保存する', type: 'submit'
+    = form.submit 'スコアを保存する'
