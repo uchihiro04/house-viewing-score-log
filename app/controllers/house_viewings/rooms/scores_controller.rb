@@ -18,7 +18,7 @@ module HouseViewings
         @room.name = room_name if @room.name != room_name
 
         if @room.save
-          redirect_to house_viewing_rooms_path, notice: 'スコアを登録しました。'
+          redirect_to house_viewing_rooms_path, notice: t('notice.create', model: @score.class.model_name.human)
         else
           render :new, status: :unprocessable_entity
         end
@@ -29,7 +29,7 @@ module HouseViewings
         @room.name = room_name if @room.name != room_name
 
         if @score.update(score_params)
-          redirect_to house_viewing_rooms_path, notice: 'スコアを更新しました。'
+          redirect_to house_viewing_rooms_path, notice: t('notice.update', model: @score.class.model_name.human)
         else
           render :edit, status: :unprocessable_entity
         end
