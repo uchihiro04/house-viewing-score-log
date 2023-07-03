@@ -5,7 +5,7 @@ module HouseViewings
     class ScoresController < ApplicationController
       before_action :set_house_viewing, :set_room, only: %i[new create edit update]
       before_action :set_score, only: %i[edit update]
-      before_action :fetch_room_name, only: %i[create update]
+      before_action :set_new_room_name, only: %i[create update]
 
       def new
         @score = Score.new
@@ -15,7 +15,6 @@ module HouseViewings
 
       def create
         @score = @room.scores.new(score_params)
-        @room.name = @room_name if @room.name != @room_name
 
         if @room.save
           redirect_to house_viewing_rooms_path, notice: t('notice.create', model: @score.class.model_name.human)
@@ -25,8 +24,6 @@ module HouseViewings
       end
 
       def update
-        @room.name = @room_name if @room.name != @room_name
-
         if @score.update(score_params)
           redirect_to house_viewing_rooms_path, notice: t('notice.update', model: @score.class.model_name.human)
         else
@@ -44,8 +41,8 @@ module HouseViewings
         @room = @house_viewing.rooms.find(params[:room_id])
       end
 
-      def fetch_room_name
-        @room_name = params[:score][:room][:name]
+      def set_new_room_name
+        @room.name = params[:score][:room][:name]
       end
 
       def set_score
