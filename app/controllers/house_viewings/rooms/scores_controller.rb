@@ -26,7 +26,8 @@ module HouseViewings
 
       def update
         room_name = params[:score][:room][:name]
-        @room.update!(name: room_name) if @room.name != room_name
+        @room.name = room_name if @room.name != room_name
+
         if @score.update(score_params)
           redirect_to house_viewing_rooms_path, notice: 'スコアを更新しました。'
         else

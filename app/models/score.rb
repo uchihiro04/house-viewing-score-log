@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Score < ApplicationRecord
-  belongs_to :room
+  belongs_to :room, autosave: true
 
   with_options presence: true do
     validates :reviewer_name
