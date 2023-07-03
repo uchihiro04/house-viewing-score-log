@@ -1,5 +1,4 @@
 .flex
   = link_to '<', house_viewing_rooms_path
-  h1
-    = "スコアを編集する"
+  h1 スコアを編集する
 = render partial: 'form', locals: { house_viewing: @house_viewing, room: @room, score: @score }
