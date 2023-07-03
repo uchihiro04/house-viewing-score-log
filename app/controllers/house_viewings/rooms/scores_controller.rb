@@ -14,7 +14,7 @@ module HouseViewings
         room_name = params[:score][:room][:name]
         @score = @room.scores.new(score_params)
         @room.name = room_name if @room.name != room_name
-        
+
         if @room.save
           redirect_to house_viewing_rooms_path, notice: 'スコアを登録しました。'
         else
