@@ -17,7 +17,7 @@ module HouseViewings
         @score = @room.scores.new(score_params)
 
         if @room.save
-          redirect_to house_viewing_rooms_path, notice: t('notice.create', model: @score.class.model_name.human)
+          redirect_to house_viewing_rooms_path, notice: t('notice.create', model: @score.model_name.human)
         else
           render :new, status: :unprocessable_entity
         end
@@ -26,7 +26,7 @@ module HouseViewings
       def update
         set_room_name
         if @score.update(score_params)
-          redirect_to house_viewing_rooms_path, notice: t('notice.update', model: @score.class.model_name.human)
+          redirect_to house_viewing_rooms_path, notice: t('notice.update', model: @score.model_name.human)
         else
           render :edit, status: :unprocessable_entity
         end
