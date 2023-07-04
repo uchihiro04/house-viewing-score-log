@@ -16,4 +16,6 @@ class Score < ApplicationRecord
       validates :rent
     end
   end
+
+  EVALUATION_ITEMS = %i[living_room storage kitchen bath toilet equipment surroundings rent].freeze
 end

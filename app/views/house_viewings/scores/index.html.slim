@@ -18,7 +18,7 @@ table
       th
       - @top_two_room_scores.each do |room_score|
         th = room_score.name
-    - Room::EVALUATION_ITEMS.each do |evaluation_item|
+    - Score::EVALUATION_ITEMS.each do |evaluation_item|
       tr
         td = t("activerecord.attributes.score.#{evaluation_item}")
         - @top_two_room_scores.each do |room_score|
