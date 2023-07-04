@@ -10,18 +10,24 @@ class Room < ApplicationRecord
 
   def average_total_score
     sum_total_scores = EVALUATION_ITEMS.sum { |attribute_name| scores.sum(attribute_name) }.to_f
-    if scores.length.positive?
-      (sum_total_scores / scores.length).round
+    if number_of_scores.positive?
+      (sum_total_scores / number_of_scores).round
     else
       0
     end
   end
 
   def average_score(attribute_name)
-    if scores.length.positive?
-      (scores.sum(attribute_name).to_f / scores.length).round
+    if number_of_scores.positive?
+      (scores.sum(attribute_name).to_f / number_of_scores).round
     else
       0
     end
+  end
+
+  private
+
+  def number_of_scores
+    scores.length
   end
 end
