@@ -6,11 +6,8 @@ module HouseViewings
       house_viewing = HouseViewing.find_by!(uuid: params[:house_viewing_uuid])
       @rooms = house_viewing.rooms.order(:created_at)
 
-      room_scores = {}
-      @rooms.each do |room|
-        room_scores[room.name] = room.average_total_score
-      end
-      @top_two_scores = room_scores.sort_by { |_key, value| -value }.first(2)
+      number_of_display = 2
+      @top_two_room_scores = @rooms.max_by(number_of_display, &:average_total_score)
     end
   end
 end
