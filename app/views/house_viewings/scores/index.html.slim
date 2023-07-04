@@ -18,7 +18,7 @@ table
       th
       - @top_two_room_scores.each do |room_score|
         th = room_score.name
-    - %i[living_room storage kitchen bath toilet equipment surroundings rent].each do |evaluation_item|
+    - Room::EVALUATION_ITEMS.each do |evaluation_item|
       tr
         td = t("activerecord.attributes.score.#{evaluation_item}")
         - @top_two_room_scores.each do |room_score|
