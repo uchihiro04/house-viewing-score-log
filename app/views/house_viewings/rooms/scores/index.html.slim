@@ -1,3 +1,7 @@
 .flex
   = link_to '<', house_viewing_scores_path
   h1 お部屋のスコア
+
+.flex
+  p = @room.name
+  p = "合計: #{@room.average_total_score} 点"
