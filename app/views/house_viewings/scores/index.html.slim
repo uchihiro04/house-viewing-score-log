@@ -11,4 +11,10 @@ h2 お部屋ごとのスコア
 p
   | 合計スコアが高い順に表示します。
   br
-  | お部屋をタップ・クリックするとスコアの詳細ページに移動します。
+  | お部屋の名前をタップ・クリックするとスコアの詳細ページに移動します。
+table
+  tbody
+    - @rooms.each do |room|
+      tr
+        td = link_to room.name
+        td = "#{room.average_total_score} 点"

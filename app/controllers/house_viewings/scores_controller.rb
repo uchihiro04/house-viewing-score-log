@@ -2,6 +2,9 @@
 
 module HouseViewings
   class ScoresController < ApplicationController
-    def index; end
+    def index
+      house_viewing = HouseViewing.find_by!(uuid: params[:house_viewing_uuid])
+      @rooms = house_viewing.rooms.order(:created_at)
+    end
   end
 end
