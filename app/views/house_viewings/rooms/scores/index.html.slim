@@ -5,3 +5,11 @@
 .flex
   p = @room.name
   p = "合計: #{@room.average_total_score} 点"
+
+h2 評価項目ごとの平均スコア
+table
+  tbody
+    - Room::EVALUATION_ITEMS.each do |evaluation_item|
+      tr
+        td = t("activerecord.attributes.score.#{evaluation_item}")
+        td = "#{@room.average_score(evaluation_item)} 点"
