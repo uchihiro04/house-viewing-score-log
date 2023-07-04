@@ -4,6 +4,12 @@
 
 h2 総合スコア
 p 上位2件のお部屋を表示します。
+table
+  tbody
+    - @top_two_scores.each do |key, value|
+      tr
+        td = key
+        td = "#{value} 点"
 
 h3 上位2件のスコアを比較
 
