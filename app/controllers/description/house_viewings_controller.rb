@@ -2,6 +2,8 @@
 
 module Description
   class HouseViewingsController < ApplicationController
-    def show; end
+    def show
+      @house_viewing = HouseViewing.find_by!(uuid: params[:uuid])
+    end
   end
 end
