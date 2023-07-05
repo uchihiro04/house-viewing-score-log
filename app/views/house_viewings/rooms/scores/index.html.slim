@@ -9,7 +9,7 @@
 h2 評価項目ごとの平均スコア
 table
   tbody
-    - Room::EVALUATION_ITEMS.each do |evaluation_item|
+    - Score::EVALUATION_ITEMS.each do |evaluation_item|
       tr
         td = Score.human_attribute_name(evaluation_item)
         td = "#{@room.average_score(evaluation_item)} 点"
