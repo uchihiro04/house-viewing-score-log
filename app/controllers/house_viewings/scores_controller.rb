@@ -8,7 +8,7 @@ module HouseViewings
       house_viewing = HouseViewing.find_by!(uuid: params[:house_viewing_uuid])
       @rooms = house_viewing.rooms.order(:created_at)
 
-      @top_two_room_scores = @rooms.max_by(TOP_TWO, &:average_total_score)
+      @top_two_rooms = @rooms.max_by(TOP_TWO, &:average_total_score)
     end
   end
 end
