@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root to: "home#index"
+
   resources :house_viewings, param: :uuid do 
     resources :scores, only: [:index], module: :house_viewings
     resources :rooms, only: [:index], module: :house_viewings do
