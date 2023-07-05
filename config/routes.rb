@@ -7,4 +7,8 @@ Rails.application.routes.draw do
       resources :scores, only: [:index, :new, :create, :edit, :update], module: :rooms
     end
   end
+
+  namespace :description do
+    resources :house_viewings, only: [:show], param: :uuid 
+  end
 end
