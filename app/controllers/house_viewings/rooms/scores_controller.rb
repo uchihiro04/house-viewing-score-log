@@ -3,7 +3,7 @@
 module HouseViewings
   module Rooms
     class ScoresController < ApplicationController
-      before_action :set_house_viewing, :set_room, only: %i[index new create edit update]
+      before_action :set_house_viewing, :set_room
       before_action :set_score, only: %i[edit update]
 
       def index; end
