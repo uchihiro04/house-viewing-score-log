@@ -20,7 +20,7 @@ table
         th = room.name
     - Score::EVALUATION_ITEMS.each do |evaluation_item|
       tr
-        td = t("activerecord.attributes.score.#{evaluation_item}")
+        td = Score.human_attribute_name(evaluation_item)
         - @top_two_rooms.each do |room|
           td = "#{room.average_score(evaluation_item)} 点"
 
