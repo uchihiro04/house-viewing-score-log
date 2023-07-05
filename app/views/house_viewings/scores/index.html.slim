@@ -1,0 +1,37 @@
+.flex
+  = link_to '<', house_viewing_rooms_path
+  h1 お部屋のスコア
+
+h2 総合スコア
+p 上位2件のお部屋を表示します。
+table
+  tbody
+    - @top_two_rooms.each do |room|
+      tr
+        td = room.name
+        td = "#{room.average_total_score} 点"
+
+h3 上位2件のスコアを比較
+table
+  tbody
+    tr
+      th
+      - @top_two_rooms.each do |room|
+        th = room.name
+    - Score::EVALUATION_ITEMS.each do |evaluation_item|
+      tr
+        td = Score.human_attribute_name(evaluation_item)
+        - @top_two_rooms.each do |room|
+          td = "#{room.average_score(evaluation_item)} 点"
+
+h2 お部屋ごとのスコア
+p
+  | 合計スコアが高い順に表示します。
+  br
+  | お部屋の名前をタップ・クリックするとスコアの詳細ページに移動します。
+table
+  tbody
+    - @rooms.each do |room|
+      tr
+        td = link_to room.name
+        td = "#{room.average_total_score} 点"
