@@ -6,7 +6,9 @@ module HouseViewings
       before_action :set_house_viewing, :set_room
       before_action :set_score, only: %i[edit update]
 
-      def index; end
+      def index
+        redirect_to house_viewing_scores_path, alert: t('alert.no_scores') if @room.scores_blank?
+      end
 
       def new
         @score = Score.new
