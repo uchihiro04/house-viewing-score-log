@@ -3,7 +3,7 @@
 module HouseViewings
   module RoomsHelper
     def scores?(rooms)
-      Score.where(room_id: rooms.ids).exists?
+      Score.exists?(room_id: rooms.ids)
     end
   end
 end
