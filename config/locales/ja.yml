@@ -202,3 +202,5 @@ ja:
     create: "%{model}を作成しました。"
     update: "%{model}を編集しました。"
     destroy: "%{model}を削除しました。"
+  alert:
+    no_scores: スコアが未入力です
