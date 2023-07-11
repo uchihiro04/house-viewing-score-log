@@ -6,7 +6,7 @@ module HouseViewings
 
     def index
       house_viewing = HouseViewing.find_by!(uuid: params[:house_viewing_uuid])
-      @rooms = house_viewing.rooms.includes(:scores).order(:created_at)
+      @rooms = house_viewing.rooms.includes(:scores).joins(:scores).order(:created_at)
 
       redirect_to house_viewing_rooms_path, alert: t('alert.no_scores') unless Room.score_entered?(@rooms.ids)
 
