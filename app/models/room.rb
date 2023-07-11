@@ -22,8 +22,4 @@ class Room < ApplicationRecord
 
     (scores.sum(attribute_name).to_f / scores.length).round(1)
   end
-
-  def number_of_scores
-    scores.length
-  end
 end

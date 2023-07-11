@@ -4,7 +4,7 @@ table
     - @rooms.each do |room|
       tr
         td = link_to room.name, new_house_viewing_room_score_path(room_id: room.id)
-        td = "スコア入力数: #{room.number_of_scores}"
+        td = "スコア入力数: #{room.scores.length}"
 
 p 1件以上スコアの入力が完了していると、スコアを見ることができます。
 = link_to_if Room.score_entered?(@rooms.ids), 'スコアを見る', house_viewing_scores_path
