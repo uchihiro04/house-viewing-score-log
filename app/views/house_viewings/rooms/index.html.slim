@@ -1,22 +1,23 @@
 header.border-b.border-black
   .container.flex.justify-center.mx-auto.p-5
     h1.font-bold.text-2xl 内見したお部屋一覧
-table.flex.justify-center.my-6.mx-10.text-left.table-auto
-  tbody
-    - @rooms.each do |room|
-      tr.border.border-black
-        td.px-4.py-2
-          = link_to room.name, new_house_viewing_room_score_path(room_id: room.id)
-          p = "スコア入力数: #{room.scores.length}"
-        td.pl-8.pr-4.py-2
-          svg.w-4.h-4 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 8 14"
-            path[stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
-            d="m1 13 5.7-5.326a.909.909 0 0 0 0-1.348L1 1"]
+.mx-10
+  table.mt-6.mb-3.text-left.table-auto.w-full.md:w-1/2.mx-auto
+    tbody
+      - @rooms.each do |room|
+        tr.border.border-black
+          td.px-4.py-2
+            = link_to room.name, new_house_viewing_room_score_path(room_id: room.id)
+            p = "スコア入力数: #{room.scores.length}"
+          td.pl-8.pr-4.py-2
+            svg.w-4.h-4 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 8 14"
+              path[stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+              d="m1 13 5.7-5.326a.909.909 0 0 0 0-1.348L1 1"]
 
-p 1件以上スコアの入力が完了していると、スコアを見ることができます。
-= link_to_if Room.score_entered?(@rooms.ids), 'スコアを見る', house_viewing_scores_path
+  p 1件以上スコアの入力が完了していると、スコアを見ることができます。
+  = link_to_if Room.score_entered?(@rooms.ids), 'スコアを見る', house_viewing_scores_path
 
-p URLを共有すると、複数人で採点ができます。
-.flex[data-controller="clipboard"]
+  p URLを共有すると、複数人で採点ができます。
+  .flex[data-controller="clipboard"]
   input[data-clipboard-target="url" type="hidden" value=description_house_viewing_url(@house_viewing)]
   button[data-action="clipboard#copySharedUrl"] 招待URLをコピー
