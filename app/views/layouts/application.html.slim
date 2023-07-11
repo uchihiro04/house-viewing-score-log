@@ -11,5 +11,10 @@ html
     = javascript_importmap_tags
   body
     main
-      = flash.notice.presence || flash.alert.presence
+      - if flash.notice.present?
+        .bg-blue-100.border-t.border-b.border-blue-500.text-blue-700.px-4.py-3 role="alert"
+          = flash.notice
+      - if flash.alert.present?
+        .bg-red-100.border.border-red-400.text-red-700.px-4.py-3.rounded.relative role="alert"
+          = flash.alert
       = yield
