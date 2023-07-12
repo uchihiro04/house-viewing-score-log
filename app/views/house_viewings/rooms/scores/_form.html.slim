@@ -43,5 +43,4 @@
                 .flex.items-center.flex-col.text-sm
                   = form.label evaluation_item.to_sym, i + 1
                   = form.radio_button evaluation_item.to_sym, i + 1
-        .block
-          = form.submit 'スコアを保存する'
+        = form.submit 'スコアを保存する', class: 'btn-lg'

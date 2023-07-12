@@ -18,13 +18,13 @@ header.header
                 path[stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
                 d="m1 13 5.7-5.326a.909.909 0 0 0 0-1.348L1 1"]
 
-  p.md:w-1/3.mx-auto 1件以上スコアの入力が完了していると、スコアを見ることができます。
-  - if Room.score_entered?(@rooms.ids)
-    = link_to 'スコアを見る', house_viewing_scores_path, class: 'block btn-lg'
-  - else
-    span.bg-gray-400.block.btn-lg.pointer-events-none スコアを見る
+    p 1件以上スコアの入力が完了していると、スコアを見ることができます。
+    - if Room.score_entered?(@rooms.ids)
+      = link_to 'スコアを見る', house_viewing_scores_path, class: 'block btn-lg'
+    - else
+      span.bg-gray-400.block.btn-lg.pointer-events-none スコアを見る
 
-  p.md:w-1/3.mx-auto URLを共有すると、複数人で採点ができます。
-  .flex[data-controller="clipboard"]
-    input[data-clipboard-target="url" type="hidden" value=description_house_viewing_url(@house_viewing)]
-    button.btn-lg[data-action="clipboard#copySharedUrl"] 招待URLをコピー
+    p URLを共有すると、複数人で採点ができます。
+    .flex[data-controller="clipboard"]
+      input[data-clipboard-target="url" type="hidden" value=description_house_viewing_url(@house_viewing)]
+      button.btn-lg[data-action="clipboard#copySharedUrl"] 招待URLをコピー
