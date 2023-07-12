@@ -13,7 +13,7 @@
 
       .mt-4
         .flex.items-center.justify-between
-          h2.font-bold.text-lg 入力者一覧
+          h2.font-bold.text-base 入力者一覧
           - if score.persisted?
             = link_to '新規入力', new_house_viewing_room_score_path(room_id: room.id)
         - if room.scores.blank?
@@ -26,8 +26,10 @@
                 = link_to '編集', edit_house_viewing_room_score_path(house_viewing, room, score),
                 class: 'bg-slate-950 block hover:bg-slate-700 py-0.5 px-1 rounded-lg text-center text-sm text-white w-16'
 
-      h2 入力者（名前・ニックネーム）
-      = form.text_field :reviewer_name
+      .mt-4
+        h2.font-bold.text-base 入力者（名前・ニックネーム）
+        = form.text_field :reviewer_name, class: 'block w-full'
+
       - evaluation_items.each do |evaluation_item|
         h2
           = evaluation_item
