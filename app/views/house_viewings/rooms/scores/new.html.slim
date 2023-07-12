@@ -1,5 +1,6 @@
-.flex
-  = link_to '<', house_viewing_rooms_path
-  h1
-    = 'スコアを入力する'
+header.border-b.border-black
+  .container.flex.justify-center.mx-auto.p-5
+    = link_to '<', house_viewing_rooms_path
+    h1.font-bold.text-2xl = 'スコアを入力する'
+
 = render partial: 'form', locals: { house_viewing: @house_viewing, room: @room, score: @score }
