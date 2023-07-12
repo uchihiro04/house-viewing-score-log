@@ -10,4 +10,16 @@
   .flash-message {
     @apply border px-4 py-3;
   }
+
+  .header {
+    @apply border-b border-black;
+  }
+
+  .header-container {
+    @apply container flex justify-center mx-auto p-5;
+  }
+
+  .h1-title {
+    @apply font-bold text-2xl;
+  }
 }
