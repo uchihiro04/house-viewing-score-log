@@ -5,7 +5,7 @@ header.header
   table.mt-6.mb-3.text-left.table-auto.w-full.md:w-1/3.mx-auto
     tbody
       - @rooms.each do |room|
-        tr.border.border-black.cursor-pointer[data-controller="url" data-action="click->url#transitionUrl" data-href=new_house_viewing_room_score_path(room_id: room.id)]
+        tr.border.border-black.cursor-pointer[data-controller="url" data-action="click->url#transitionToUrl" data-href=new_house_viewing_room_score_path(room_id: room.id)]
           td.px-4.py-2
             = room.name
             p = "スコア入力数: #{room.scores.length}"
