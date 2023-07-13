@@ -7,7 +7,7 @@
 
     = form_with model: [house_viewing, room, score], local: true, class: 'my-4' do |form|
       = form.fields_for :room do |room_fields|
-        = room_fields.text_field :name, value: room.name, class: 'block w-full'
+        = room_fields.text_field :name, value: room.name, class: 'text-field'
 
       p 分かりやすい名前に変更しましょう。
 
@@ -28,7 +28,7 @@
 
       .mt-6
         h2.font-bold.text-base 入力者（名前・ニックネーム）
-        = form.text_field :reviewer_name, class: 'block w-full'
+        = form.text_field :reviewer_name, class: 'text-field'
 
       .mt-6
         - evaluation_items.each do |evaluation_item|

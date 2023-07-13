@@ -26,4 +26,8 @@
   .back-button {
     @apply absolute left-10 md:left-3;
   }
+
+  .text-field {
+    @apply block w-full rounded-lg;
+  }
 }
