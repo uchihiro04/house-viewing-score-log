@@ -8,7 +8,7 @@
   }
 
   .flash-message {
-    @apply border px-4 py-3;
+    @apply border px-4 py-3 rounded;
   }
 
   .header {
