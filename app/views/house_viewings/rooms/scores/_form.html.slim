@@ -34,7 +34,7 @@
         - evaluation_items.each do |evaluation_item|
           .mb-6
             h2.h2-title
-              = evaluation_item
+              = Score.human_attribute_name(evaluation_item)
             .flex.justify-between.mx-auto.mt-2.text-sm.w-4/5
               p = good_evaluation_name(evaluation_item)
               p = bad_evaluation_name(evaluation_item)
