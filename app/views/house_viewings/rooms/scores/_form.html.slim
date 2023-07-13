@@ -13,7 +13,7 @@
 
       .mt-6
         .flex.items-center.justify-between
-          h2.font-bold.text-base 入力者一覧
+          h2.h2-title 入力者一覧
           - if score.persisted?
             = link_to '新規入力', new_house_viewing_room_score_path(room_id: room.id)
         - if room.scores.blank?
@@ -27,13 +27,13 @@
                 class: 'btn-sm'
 
       .mt-6
-        h2.font-bold.text-base 入力者（名前・ニックネーム）
+        h2.h2-title 入力者（名前・ニックネーム）
         = form.text_field :reviewer_name, class: 'text-field'
 
       .mt-6
         - evaluation_items.each do |evaluation_item|
           .mb-6
-            h2.font-bold.text-base
+            h2.h2-title
               = evaluation_item
             .flex.justify-between.mx-auto.text-sm.w-4/5
               p = good_evaluation_name(evaluation_item)
