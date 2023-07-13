@@ -17,7 +17,7 @@
           - if score.persisted?
             = link_to '新規入力', new_house_viewing_room_score_path(room_id: room.id)
         - if room.scores.blank?
-          p.text-red-600 スコアを入力した人はいません
+          p.text-center.text-red-600.mt-2 スコアを入力した人はいません
         ul
           - room.scores.each do |score|
             - if score.persisted?
