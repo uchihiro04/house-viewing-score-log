@@ -16,7 +16,7 @@
   }
 
   .header-container {
-    @apply container flex justify-center mx-auto p-5;
+    @apply container flex items-center justify-center mx-auto p-5;
   }
 
   .h1-title {
