@@ -38,4 +38,8 @@
   .text-field {
     @apply block w-full rounded-lg;
   }
+
+  .table-border {
+    @apply border border-black;
+  }
 }
