@@ -39,8 +39,8 @@
               p = good_evaluation_name(evaluation_item)
               p = bad_evaluation_name(evaluation_item)
             div class="flex justify-between mx-auto px-1.5 w-4/5"
-              - 5.times do |i|
+              - Score::HIGHEST_SCORE.downto(Score::LOWEST_SCORE) do |i|
                 .flex.items-center.flex-col.text-sm
-                  = form.label evaluation_item.to_sym, i + 1
-                  = form.radio_button evaluation_item.to_sym, i + 1
+                  = form.label evaluation_item.to_sym, i
+                  = form.radio_button evaluation_item.to_sym, i
         = form.submit 'スコアを保存する', class: 'btn-lg'
