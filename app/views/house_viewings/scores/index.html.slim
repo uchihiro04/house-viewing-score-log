@@ -5,36 +5,38 @@ header.header
         path[stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 1 1.3 6.326a.91.91 0 0 0 0 1.348L7 13"]
     h1.h1-title お部屋のスコア
 
-h2 総合スコア
-p 上位2件のお部屋を表示します。
-table
-  tbody
-    - @top_two_rooms.each do |room|
-      tr
-        td = room.name
-        td = "#{room.average_total_score} 点"
-
-h3 上位2件のスコアを比較
-table
-  tbody
-    tr
-      th
-      - @top_two_rooms.each do |room|
-        th = room.name
-    - Score::EVALUATION_ITEMS.each do |evaluation_item|
-      tr
-        td = Score.human_attribute_name(evaluation_item)
+.mx-10.my-6
+  .md:w-1/3.mx-auto
+    h2.h1-title 総合スコア
+    p 上位2部屋の平均点を表示します。
+    table
+      tbody
         - @top_two_rooms.each do |room|
-          td = "#{room.average_score(evaluation_item)} 点"
+          tr
+            td = room.name
+            td = "#{room.average_total_score} 点"
 
-h2 お部屋ごとのスコア
-p
-  | 合計スコアが高い順に表示します。
-  br
-  | お部屋の名前をタップ・クリックするとスコアの詳細ページに移動します。
-table
-  tbody
-    - @rooms.each do |room|
-      tr
-        td = link_to room.name, house_viewing_room_scores_path(room_id: room.id)
-        td = "#{room.average_total_score} 点"
+    h3 上位2件のスコアを比較
+    table
+      tbody
+        tr
+          th
+          - @top_two_rooms.each do |room|
+            th = room.name
+        - Score::EVALUATION_ITEMS.each do |evaluation_item|
+          tr
+            td = Score.human_attribute_name(evaluation_item)
+            - @top_two_rooms.each do |room|
+              td = "#{room.average_score(evaluation_item)} 点"
+
+    h2 お部屋ごとのスコア
+    p
+      | 合計スコアが高い順に表示します。
+      br
+      | お部屋の名前をタップ・クリックするとスコアの詳細ページに移動します。
+    table
+      tbody
+        - @rooms.each do |room|
+          tr
+            td = link_to room.name, house_viewing_room_scores_path(room_id: room.id)
+            td = "#{room.average_total_score} 点"
