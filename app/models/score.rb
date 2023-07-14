@@ -18,4 +18,6 @@ class Score < ApplicationRecord
   end
 
   EVALUATION_ITEMS = %i[living_room storage kitchen bath toilet equipment surroundings rent].freeze
+  HIGHEST_SCORE = 5
+  LOWEST_SCORE = 1
 end
