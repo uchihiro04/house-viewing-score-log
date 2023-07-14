@@ -40,7 +40,7 @@ header.header
         li.list-row.px-3.py-2.first:rounded-t-lg.last:rounded-b-lg
           = link_to house_viewing_room_scores_path(room_id: room.id) do
             .flex.justify-between.items-center
-              div
+              .w-4/5
                 = room.name
               div
                 = "#{room.average_total_score} 点"
