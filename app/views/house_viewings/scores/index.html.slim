@@ -17,7 +17,7 @@ header.header
             td = "#{room.average_total_score} 点"
 
     h3.mt-4.h2-title 上位2件のスコアを比較
-    table.mb-4.mt-2.p-2.w-full
+    table.mb-6.mt-2.p-2.w-full
       tbody
         tr
           th.table-border
@@ -29,11 +29,8 @@ header.header
             - @top_two_rooms.each do |room|
               td.table-border = "#{room.average_score(evaluation_item)} 点"
 
-    h2 お部屋ごとのスコア
-    p
-      | 合計スコアが高い順に表示します。
-      br
-      | お部屋の名前をタップ・クリックするとスコアの詳細ページに移動します。
+    h2.h1-title お部屋ごとのスコア
+    p お部屋の名前をタップ・クリックするとスコアの詳細ページに移動します。
     table
       tbody
         - @rooms.each do |room|
