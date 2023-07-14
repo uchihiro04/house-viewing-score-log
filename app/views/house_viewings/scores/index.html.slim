@@ -31,9 +31,12 @@ header.header
 
     h2.h1-title お部屋ごとのスコア
     p お部屋の名前をタップ・クリックするとスコアの詳細ページに移動します。
-    table
-      tbody
-        - @rooms.each do |room|
-          tr
-            td = link_to room.name, house_viewing_room_scores_path(room_id: room.id)
-            td = "#{room.average_total_score} 点"
+    ul.my-2
+      - @rooms.each do |room|
+        li.border.border-b-0.border-black.cursor-pointer.px-3.py-2.first:rounded-t-lg.last:border-b.last:rounded-b-lg
+          = link_to house_viewing_room_scores_path(room_id: room.id) do
+            .flex.justify-between.items-center
+              div
+                = room.name
+              div
+                = "#{room.average_total_score} 点"
