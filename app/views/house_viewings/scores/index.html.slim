@@ -9,12 +9,16 @@ header.header
   .md:w-1/3.mx-auto
     h2.h1-title 総合スコア
     p 上位2部屋の平均点を表示します。
-    table
-      tbody
-        - @top_two_rooms.each do |room|
-          tr
-            td = room.name
-            td = "#{room.average_total_score} 点"
+    ul.mt-2
+      - @top_two_rooms.each.with_index(1) do |room, i|
+        li.mb-2.text-lg.first:font-bold
+          .flex.items-center.justify-between
+            .number-circle.w-1/10
+              = i
+            .grow.ml-2.w-1/2
+              = room.name
+            div
+              = "#{room.average_total_score} 点"
 
     h3.mt-4.h2-title 上位2件のスコアを比較
     table.mb-6.mt-2.p-2.w-full
