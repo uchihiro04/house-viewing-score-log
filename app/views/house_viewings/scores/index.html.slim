@@ -7,7 +7,7 @@ header.header
 
 .mx-10.my-6
   .md:w-1/3.mx-auto
-    h2.h1-title 総合スコア
+    h2.font-bold.text-xl 総合スコア
     p 上位2部屋の平均点を表示します。
     ul.mt-2
       - @top_two_rooms.each.with_index(1) do |room, i|
@@ -33,7 +33,7 @@ header.header
             - @top_two_rooms.each do |room|
               td.table-border = "#{room.average_score(evaluation_item)} 点"
 
-    h2.h1-title お部屋ごとのスコア
+    h2.font-bold.text-xl お部屋ごとのスコア
     p お部屋の名前をタップ・クリックするとスコアの詳細ページに移動します。
     ul.my-2
       - @rooms.each do |room|
