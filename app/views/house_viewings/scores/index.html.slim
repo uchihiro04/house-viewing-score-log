@@ -33,7 +33,7 @@ header.header
     p お部屋の名前をタップ・クリックするとスコアの詳細ページに移動します。
     ul.my-2
       - @rooms.each do |room|
-        li.border.border-b-0.border-black.cursor-pointer.px-3.py-2.first:rounded-t-lg.last:border-b.last:rounded-b-lg
+        li.list-row.px-3.py-2.first:rounded-t-lg.last:rounded-b-lg
           = link_to house_viewing_room_scores_path(room_id: room.id) do
             .flex.justify-between.items-center
               div

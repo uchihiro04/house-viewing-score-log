@@ -42,4 +42,8 @@
   .table-border {
     @apply border border-black;
   }
+
+  .list-row {
+    @apply border border-b-0 border-black cursor-pointer last:border-b;
+  }
 }
