@@ -15,7 +15,7 @@
         .flex.items-center.justify-between
           h2.h2-title 入力者一覧
           - if score.persisted?
-            = link_to '新規入力', new_house_viewing_room_score_path(room_id: room.id)
+            = link_to '新規入力', new_house_viewing_room_score_path(room_id: room.id), class: 'btn-sm'
         - if room.scores.blank?
           p.text-center.text-red-600.mt-2 スコアを入力した人はいません
         ul
@@ -23,8 +23,7 @@
             - if score.persisted?
               .flex.items-center.justify-between.mt-2
                 li.w-3/4 = score.reviewer_name
-                = link_to '編集', edit_house_viewing_room_score_path(house_viewing, room, score),
-                class: 'btn-sm'
+                = link_to '編集', edit_house_viewing_room_score_path(house_viewing, room, score), class: 'btn-sm'
 
       .mt-6
         h2.h2-title 入力者（名前・ニックネーム）
