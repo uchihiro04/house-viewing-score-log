@@ -50,4 +50,8 @@
   .number-circle {
     @apply border border-black border-solid flex h-6 items-center justify-center my-auto rounded-full w-6
   }
+
+  .description-container {
+    @apply border border-black mt-4 px-8 py-6 rounded-lg;
+  }
 }
