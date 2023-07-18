@@ -38,4 +38,16 @@
   .text-field {
     @apply block w-full rounded-lg;
   }
+
+  .table-border {
+    @apply border border-black;
+  }
+
+  .list-row {
+    @apply border border-b-0 border-black cursor-pointer last:border-b;
+  }
+
+  .number-circle {
+    @apply border border-black border-solid flex h-6 items-center justify-center my-auto rounded-full w-6
+  }
 }

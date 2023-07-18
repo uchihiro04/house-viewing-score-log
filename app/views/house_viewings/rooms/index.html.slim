@@ -6,7 +6,7 @@ header.header
   .md:w-1/3.mx-auto
     ul.mb-2
       - @rooms.each do |room|
-        li.border.border-b-0.border-black.cursor-pointer.px-2.py-1.last:border-b
+        li.list-row.px-2.py-1
           = link_to new_house_viewing_room_score_path(room_id: room.id) do
             .flex.justify-between.items-center
               div
