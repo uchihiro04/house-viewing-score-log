@@ -1,15 +1,22 @@
-.flex
-  = link_to '<', house_viewing_scores_path
-  h1 お部屋のスコア
+header.header
+  .header-container
+    svg.back-button.w-5.h-5 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 8 14"
+      = link_to house_viewing_scores_path
+        path[stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 1 1.3 6.326a.91.91 0 0 0 0 1.348L7 13"]
+    h1.h1-title = 'お部屋のスコア'
 
-.flex
-  p = @room.name
-  p = "合計: #{@room.average_total_score} 点"
+.mx-10.mt-10
+  .md:w-1/3.mx-auto
+    .flex.font-bold.items-center.justify-between.mb-4.text-lg
+      p.w-3/5 = @room.name
+      p = "平均: #{@room.average_total_score} 点"
 
-h2 評価項目ごとの平均スコア
-table
-  tbody
-    - Score::EVALUATION_ITEMS.each do |evaluation_item|
-      tr
-        td = Score.human_attribute_name(evaluation_item)
-        td = "#{@room.average_score(evaluation_item)} 点"
+    h2.font-bold.text-base 評価項目ごとの平均スコア
+    ul.my-2
+      - Score::EVALUATION_ITEMS.each do |evaluation_item|
+        li.list-row.px-3.py-2.first:rounded-t-lg.last:rounded-b-lg
+          .flex.justify-between
+            div
+              = Score.human_attribute_name(evaluation_item)
+            div
+              = "#{@room.average_score(evaluation_item)} 点"
