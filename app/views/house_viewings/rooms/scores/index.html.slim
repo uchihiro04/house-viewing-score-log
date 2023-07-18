@@ -11,10 +11,12 @@ header.header
       p.w-3/5 = @room.name
       p = "平均: #{@room.average_total_score} 点"
 
-    h2 評価項目ごとの平均スコア
-    table
-      tbody
-        - Score::EVALUATION_ITEMS.each do |evaluation_item|
-          tr
-            td = Score.human_attribute_name(evaluation_item)
-            td = "#{@room.average_score(evaluation_item)} 点"
+    h2.font-bold.text-base 評価項目ごとの平均スコア
+    ul.my-2
+      - Score::EVALUATION_ITEMS.each do |evaluation_item|
+        li.list-row.px-3.py-2.first:rounded-t-lg.last:rounded-b-lg
+          .flex.justify-between
+            div
+              = Score.human_attribute_name(evaluation_item)
+            div
+              = "#{@room.average_score(evaluation_item)} 点"
