@@ -1,2 +1,4 @@
-= render partial: 'shared/summary'
-= link_to 'スコアを入力する', house_viewing_rooms_path(@house_viewing)
+.flex.items-center.h-screen.mx-10
+  .md:w-1/3.mx-auto
+    = render partial: 'shared/summary'
+    = link_to 'スコアを入力する', house_viewing_rooms_path(@house_viewing), class: 'btn-md w-3/4'
