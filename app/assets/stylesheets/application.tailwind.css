@@ -4,11 +4,15 @@
 
 @layer components {
   .btn-lg {
-    @apply bg-slate-950 cursor-pointer hover:bg-slate-700 mb-5 py-2 px-4 rounded text-center text-white w-full;
+    @apply bg-slate-950 cursor-pointer hover:bg-slate-700 mb-5 px-4 py-2 rounded-lg text-center text-white w-full;
+  }
+
+  .btn-md {
+    @apply bg-slate-950 block cursor-pointer hover:bg-slate-700 mt-4 mx-auto px-4 py-2 rounded-lg text-center text-white w-1/2;
   }
 
   .btn-sm {
-    @apply bg-slate-950 block hover:bg-slate-700 py-0.5 px-1 rounded-lg text-center text-sm text-white w-16;
+    @apply bg-slate-950 block cursor-pointer hover:bg-slate-700 py-0.5 px-1 rounded-lg text-center text-sm text-white w-16;
   }
 
   .flash-message {
@@ -49,5 +53,9 @@
 
   .number-circle {
     @apply border border-black border-solid flex h-6 items-center justify-center my-auto rounded-full w-6
+  }
+
+  .description-container {
+    @apply border border-black mt-4 px-8 py-6 rounded-lg;
   }
 }
