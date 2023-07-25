@@ -44,5 +44,13 @@ RSpec.describe Room, type: :model do
         expect(room.reload.average_total_score).to eq 16
       end
     end
+
+    context 'スコアが存在しない場合' do
+      let(:test_values) { [] }
+
+      it '0を返すこと' do
+        expect(room.reload.average_total_score).to eq 0
+      end
+    end
   end
 end
