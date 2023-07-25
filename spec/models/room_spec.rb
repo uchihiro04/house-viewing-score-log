@@ -9,7 +9,7 @@ RSpec.describe Room, type: :model do
 
     before do
       test_values.each do |test_value|
-        create(:score, room:, living_room: test_value)
+        create(:score, room:, Score::EVALUATION_ITEMS.first => test_value)
       end
     end
 
