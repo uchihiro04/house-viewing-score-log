@@ -8,7 +8,8 @@ header.header
 .mx-10.my-6
   .md:w-1/3.mx-auto
     h2.font-bold.text-xl 総合スコア
-    p 上位2部屋の平均点を表示します。
+    p.text-sm 総合スコア上位2部屋を表示します。
+    p.text-sm 評価項目ごとに入力者全体の平均点を算出し、合計したものが総合スコアです。
     ul.mt-2
       - @top_two_rooms.each.with_index(1) do |room, i|
         li.mb-2.text-lg.first:font-bold
