@@ -2,6 +2,6 @@
 
 FactoryBot.define do
   factory :house_viewing do
-    uuid { SecureRandom.uuid }
+    uuid { nil }
   end
 end
