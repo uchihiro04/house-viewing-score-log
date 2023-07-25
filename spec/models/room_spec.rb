@@ -16,8 +16,10 @@ RSpec.describe Room, type: :model do
     end
 
     context 'スコアが存在しない場合' do
+      let(:scores) { nil }
+
       it '0を返すこと' do
-        expect(room.average_score(Score::EVALUATION_ITEMS.first)).to eq 0
+        expect(room.reload.average_score(Score::EVALUATION_ITEMS.first)).to eq 0
       end
     end
   end
