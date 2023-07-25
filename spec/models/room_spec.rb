@@ -53,4 +53,22 @@ RSpec.describe Room, type: :model do
       end
     end
   end
+
+  describe '.score_entered?' do
+    context 'スコアが入力済みの場合' do
+      let(:test_values) { [1, 2, 3] }
+
+      it 'trueを返すこと' do
+        expect(Room.score_entered?(house_viewing.rooms.ids)).to be_truthy
+      end
+    end
+
+    context 'スコアが未入力の場合' do
+      let(:test_values) { [] }
+
+      it 'falseを返すこと' do
+        expect(Room.score_entered?(house_viewing.rooms.ids)).to_not be_truthy
+      end
+    end
+  end
 end
