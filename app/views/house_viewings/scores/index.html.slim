@@ -13,14 +13,14 @@ header.header
     ul.mt-2
       - @top_two_rooms.each.with_index(1) do |room, i|
         li.mb-2.text-lg.first:font-bold
-          .flex.items-center.justify-between
-            .number-circle.w-1/10
+          .flex
+            .number-circle.w-1/10.mr-2
               = i
-            .grow.mx-2.w-1/2
-              = room.name
             div
-              = "#{room.average_total_score} 点"
-              .text-right.text-sm &#47; 40点
+              = room.name
+          .text-right
+            = "#{room.average_total_score}点"
+            span.text-sm &#47;40点
     h3.mt-4.h2-title 上位2部屋のスコアを比較
     p.text-sm 総合スコア上位2部屋について、入力者全体の平均点を評価項目ごとに比較できます。
     p.text-sm 各評価項目は最低が1点、最高が5点です。
