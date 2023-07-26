@@ -24,21 +24,21 @@ header.header
     h3.mt-4.h2-title 上位2部屋のスコアを比較
     p.text-sm 総合スコア上位2部屋について、入力者全体の平均点を評価項目ごとに比較できます。
     p.text-sm 各評価項目は最低が1点、最高が5点です。
-    table.mb-8.mt-2.p-2.w-full
+    table.break-words.mb-8.mt-2.p-2.table-fixed.w-full
       tbody
         tr
           th.table-border.w-2/5
           - @top_two_rooms.each do |room|
-            th.table-border.w-3/10 = room.name
+            th.table-border = room.name
         - Score::EVALUATION_ITEMS.each do |evaluation_item|
           tr.text-center
             td.table-border.w-2/5 = Score.human_attribute_name(evaluation_item)
             - @top_two_rooms.each do |room|
-              td.table-border.w-3/10 = room.average_score(evaluation_item)
+              td.table-border = room.average_score(evaluation_item)
         tr.text-center
           td.font-bold.table-border.w-2/5 総合スコア
           - @top_two_rooms.each do |room|
-            td.font-bold.table-border.w-3/10 = "#{room.average_total_score} 点"
+            td.font-bold.table-border = "#{room.average_total_score} 点"
     h2.font-bold.text-xl お部屋ごとのスコア
     p.text-sm お部屋の名前をタップ・クリックするとスコアの詳細ページに移動します。
     ul.my-2
