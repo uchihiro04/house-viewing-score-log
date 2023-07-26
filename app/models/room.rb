@@ -19,4 +19,8 @@ class Room < ApplicationRecord
 
     (scores.sum(attribute_name).to_f / scores.length).round(1)
   end
+
+  def reviewer_names
+    scores.pluck(:reviewer_name)
+  end
 end
