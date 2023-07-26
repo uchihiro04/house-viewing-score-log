@@ -34,7 +34,7 @@ header.header
           tr.text-center
             td.table-border.w-2/5 = Score.human_attribute_name(evaluation_item)
             - @top_two_rooms.each do |room|
-              td.table-border.w-3/10 = "#{room.average_score(evaluation_item)} 点"
+              td.table-border.w-3/10 = room.average_score(evaluation_item)
         tr.text-center
           td.font-bold.table-border.w-2/5 総合スコア
           - @top_two_rooms.each do |room|
