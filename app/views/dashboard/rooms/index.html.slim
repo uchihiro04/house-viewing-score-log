@@ -16,6 +16,12 @@ header.header
     = form.submit '絞り込む'
 
 table
+  thead
+    tr
+      th = Room.human_attribute_name(:name)
+      - Score::EVALUATION_ITEMS.each do |evaluation_item|
+        th = Score.human_attribute_name(evaluation_item)
+      th 総合スコア
   tbody
     - @rooms.each do |room|
       tr
