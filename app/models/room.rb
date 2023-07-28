@@ -17,7 +17,7 @@ class Room < ApplicationRecord
   def average_score(attribute_name)
     return 0 if scores.blank?
 
-    (scores.sum(attribute_name).to_f / scores.length).round(1)
+    (scores.sum { |score| score.send(attribute_name) }.to_f / scores.length).round(1)
   end
 
   def reviewer_names
