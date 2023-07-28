@@ -6,17 +6,17 @@ RSpec.describe Room, type: :model do
   let(:house_viewing) { create(:house_viewing) }
   let(:room) { create(:room, house_viewing:) }
 
-  before do
-    test_values.each do |test_value|
-      evaluation_items = { room: }
-      Score::EVALUATION_ITEMS.each do |item|
-        evaluation_items[item] = test_value
-      end
-      create(:score, evaluation_items)
-    end
-  end
-
   describe '#average_score' do
+    before do
+      test_values.each do |test_value|
+        evaluation_items = { room: }
+        Score::EVALUATION_ITEMS.each do |item|
+          evaluation_items[item] = test_value
+        end
+        create(:score, evaluation_items)
+      end
+    end
+
     context 'スコアが存在する場合' do
       let(:test_values) { [1, 2, 3] }
 
@@ -36,6 +36,16 @@ RSpec.describe Room, type: :model do
   end
 
   describe '#average_total_score' do
+    before do
+      test_values.each do |test_value|
+        evaluation_items = { room: }
+        Score::EVALUATION_ITEMS.each do |item|
+          evaluation_items[item] = test_value
+        end
+        create(:score, evaluation_items)
+      end
+    end
+
     context 'スコアが存在する場合' do
       let(:test_values) { [1, 2, 3] }
 
@@ -56,7 +66,7 @@ RSpec.describe Room, type: :model do
 
   describe '.score_entered?' do
     context 'スコアが入力済みの場合' do
-      let(:test_values) { [1, 2, 3] }
+      let!(:score) { create(:score, room:) }
 
       it 'trueを返すこと' do
         expect(Room.score_entered?(house_viewing.rooms.ids)).to be_truthy
@@ -64,8 +74,6 @@ RSpec.describe Room, type: :model do
     end
 
     context 'スコアが未入力の場合' do
-      let(:test_values) { [] }
-
       it 'falseを返すこと' do
         expect(Room.score_entered?(house_viewing.rooms.ids)).to_not be_truthy
       end
