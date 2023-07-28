@@ -11,15 +11,16 @@ class Room < ApplicationRecord
   end
 
   def average_total_score
-    sum_total_scores = Score::EVALUATION_ITEMS.sum { |attribute_name| scores.sum(attribute_name) }.to_f
-    return 0 if scores.blank?
-
-    (sum_total_scores / scores.length).round
+    Score::EVALUATION_ITEMS.sum { |attribute_name| average_score(attribute_name) }
   end
 
   def average_score(attribute_name)
     return 0 if scores.blank?
 
     (scores.sum(attribute_name).to_f / scores.length).round(1)
+  end
+
+  def reviewer_names
+    scores.pluck(:reviewer_name)
   end
 end

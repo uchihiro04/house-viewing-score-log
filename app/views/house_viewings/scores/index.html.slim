@@ -8,39 +8,45 @@ header.header
 .mx-10.my-6
   .md:w-1/3.mx-auto
     h2.font-bold.text-xl 総合スコア
-    p 上位2部屋の平均点を表示します。
+    p.text-sm 上位2部屋を表示します。
+    p.text-sm 評価項目ごとに入力者全体の平均点を算出し、合計したものが総合スコアです。
     ul.mt-2
       - @top_two_rooms.each.with_index(1) do |room, i|
         li.mb-2.text-lg.first:font-bold
-          .flex.items-center.justify-between
-            .number-circle.w-1/10
+          .flex
+            .number-circle.w-1/10.mr-2
               = i
-            .grow.ml-2.w-1/2
+            .grow.w-1/2
               = room.name
-            div
-              = "#{room.average_total_score} 点"
-
-    h3.mt-4.h2-title 上位2件のスコアを比較
-    table.mb-6.mt-2.p-2.w-full
+          .text-right
+            = "#{room.average_total_score}点"
+            span.text-sm &#47;40点
+    h3.mt-4.h2-title 上位2部屋のスコアを比較
+    p.text-sm 総合スコア上位2部屋について、入力者全体の平均点を評価項目ごとに比較できます。
+    p.text-sm 各評価項目は最低が1点、最高が5点です。
+    table.break-words.mb-8.mt-2.p-2.table-fixed.w-full
       tbody
         tr
-          th.table-border
+          th.table-border.w-2/5
           - @top_two_rooms.each do |room|
-            th.table-border.w-1/3 = room.name
+            th.table-border = room.name
         - Score::EVALUATION_ITEMS.each do |evaluation_item|
-          tr.text-center.w-2/3
-            td.table-border.w-1/3 = Score.human_attribute_name(evaluation_item)
+          tr.text-center
+            td.table-border.w-2/5 = Score.human_attribute_name(evaluation_item)
             - @top_two_rooms.each do |room|
-              td.table-border.w-1/3 = "#{room.average_score(evaluation_item)} 点"
-
+              td.table-border = room.average_score(evaluation_item)
+        tr.text-center
+          td.font-bold.table-border.w-2/5 総合スコア
+          - @top_two_rooms.each do |room|
+            td.font-bold.table-border = "#{room.average_total_score} 点"
     h2.font-bold.text-xl お部屋ごとのスコア
-    p お部屋の名前をタップ・クリックするとスコアの詳細ページに移動します。
+    p.text-sm お部屋の名前をタップ・クリックするとスコアの詳細ページに移動します。
     ul.my-2
       - @rooms.each do |room|
         li.list-row.px-3.py-2.first:rounded-t-lg.last:rounded-b-lg
           = link_to house_viewing_room_scores_path(room_id: room.id) do
             .flex.justify-between.items-center
-              .w-4/5
+              .w-2/3
                 = room.name
               div
                 = "#{room.average_total_score} 点"

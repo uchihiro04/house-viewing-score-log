@@ -12,8 +12,8 @@ header.header
               div
                 div
                   = room.name
-                div
-                  = "スコア入力数: #{room.scores.length}"
+                .text-sm
+                  = "入力者: #{room.reviewer_names.join('、')}"
               div
                 svg.w-4.h-4.mx-auto xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 8 14"
                   path[stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
