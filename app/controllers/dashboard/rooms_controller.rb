@@ -2,6 +2,8 @@
 
 module Dashboard
   class RoomsController < ApplicationController
-    def index; end
+    def index
+      @rooms = Room.all
+    end
   end
 end

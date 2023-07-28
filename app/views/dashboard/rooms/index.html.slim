@@ -12,4 +12,13 @@ header.header
   = form.number_field :max_score
 
   div
-    = form.submit "絞り込む"
+    = form.submit '絞り込む'
+
+table
+  tbody
+    - @rooms.each do |room|
+      tr
+        td = room.name
+        - Score::EVALUATION_ITEMS.each do |evaluation_item|
+          td = room.average_score(evaluation_item)
+        td = "#{room.average_total_score} 点"
