@@ -16,4 +16,12 @@ RSpec.describe Score, type: :model do
       end
     end
   end
+
+  context '数値が1~5の場合' do
+    let(:score) { build(:score, room:, living_room: 3) }
+
+    it 'リビングの数値が有効であること' do
+      expect(score).to be_valid
+    end
+  end
 end
