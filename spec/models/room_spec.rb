@@ -79,4 +79,22 @@ RSpec.describe Room, type: :model do
       end
     end
   end
+
+  describe '#reviewer_names' do
+    context 'スコア入力者が存在する場合' do
+      let!(:score_one) { create(:score, room:, reviewer_name: '父') }
+      let!(:score_two) { create(:score, room:, reviewer_name: '母') }
+      let!(:score_three) { create(:score, room:, reviewer_name: '息子') }
+
+      it 'スコア入力者の名前の配列を返すこと' do
+        expect(room.reviewer_names).to eq %w[父 母 息子]
+      end
+    end
+
+    context 'スコア入力者が存在しない場合' do
+      it '空の配列を返すこと' do
+        expect(room.reviewer_names).to be_empty
+      end
+    end
+  end
 end
