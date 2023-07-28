@@ -4,3 +4,12 @@ header.header
         = link_to root_path
           path[stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 1 1.3 6.326a.91.91 0 0 0 0 1.348L7 13"]
     h1.h1-title お部屋検索
+
+= form_with url: dashboard_rooms_path, method: :get, local: true do |form|
+  span 総合スコア
+  = form.number_field :min_score
+  span 〜
+  = form.number_field :max_score
+
+  div
+    = form.submit "絞り込む"
