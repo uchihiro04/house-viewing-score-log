@@ -5,27 +5,29 @@ header.header
           path[stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 1 1.3 6.326a.91.91 0 0 0 0 1.348L7 13"]
     h1.h1-title お部屋検索
 
-= form_with url: dashboard_rooms_path, method: :get, local: true do |form|
-  .flex
-    div 総合スコア
-    = form.number_field :min_score, in: 0..40
-    div 〜
-    = form.number_field :max_score, in: 0..40
+.mx-10.my-6
+  .md:w-1/2.mx-auto
+    = form_with url: dashboard_rooms_path, method: :get, local: true do |form|
+      .flex
+        div 総合スコア
+        = form.number_field :min_score, in: 0..40
+        div 〜
+        = form.number_field :max_score, in: 0..40
 
-  div
-    = form.submit '絞り込む'
+      div
+        = form.submit '絞り込む'
 
-table
-  thead
-    tr
-      th = Room.human_attribute_name(:name)
-      - Score::EVALUATION_ITEMS.each do |evaluation_item|
-        th = Score.human_attribute_name(evaluation_item)
-      th 総合スコア
-  tbody
-    - @rooms.each do |room|
-      tr
-        td = room.name
-        - Score::EVALUATION_ITEMS.each do |evaluation_item|
-          td = room.average_score(evaluation_item)
-        td = "#{room.average_total_score} 点"
+    table
+      thead
+        tr
+          th = Room.human_attribute_name(:name)
+          - Score::EVALUATION_ITEMS.each do |evaluation_item|
+            th = Score.human_attribute_name(evaluation_item)
+          th 総合スコア
+      tbody
+        - @rooms.each do |room|
+          tr
+            td = room.name
+            - Score::EVALUATION_ITEMS.each do |evaluation_item|
+              td = room.average_score(evaluation_item)
+            td = "#{room.average_total_score} 点"
