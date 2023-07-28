@@ -6,10 +6,11 @@ header.header
     h1.h1-title お部屋検索
 
 = form_with url: dashboard_rooms_path, method: :get, local: true do |form|
-  span 総合スコア
-  = form.number_field :min_score, in: 0..40
-  span 〜
-  = form.number_field :max_score, in: 0..40
+  .flex
+    div 総合スコア
+    = form.number_field :min_score, in: 0..40
+    div 〜
+    = form.number_field :max_score, in: 0..40
 
   div
     = form.submit '絞り込む'
