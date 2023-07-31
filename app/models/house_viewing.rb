@@ -8,6 +8,7 @@ class HouseViewing < ApplicationRecord
 
   DEFAULT_ROOMS_COUNT = 10
 
+  # to_paramメソッドをオーバーライドすることで、ヘルパーメソッドで生成されるURLについてuuidを使用する形に変更しています。
   def to_param
     uuid
   end
