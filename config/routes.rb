@@ -11,4 +11,8 @@ Rails.application.routes.draw do
   namespace :description do
     resources :house_viewings, only: [:show], param: :uuid 
   end
+
+  namespace :dashboard do
+    resources :rooms, only: [:index]
+  end
 end
