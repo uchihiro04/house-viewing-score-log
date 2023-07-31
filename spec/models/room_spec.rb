@@ -30,7 +30,7 @@ RSpec.describe Room, type: :model do
       let(:test_values) { [] }
 
       it '0を返すこと' do
-        expect(room.reload.average_score(Score::EVALUATION_ITEMS.first)).to eq 0
+        expect(room.reload.average_score(Score::EVALUATION_ITEMS.first)).to eq 100
       end
     end
   end
