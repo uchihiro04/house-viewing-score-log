@@ -8,16 +8,14 @@ header.header
 .mx-10.my-6
   .md:w-1/2.mx-auto
     = form_with url: dashboard_rooms_path, method: :get, local: true do |form|
-      .flex.items-center
+      .flex.items-center.justify-center
         .mr-4 総合スコア
         = form.number_field :min_score, in: 0..40
         .mx-4 〜
         = form.number_field :max_score, in: 0..40
+        = form.submit '絞り込む', class: 'btn-sm ml-4'
 
-      div
-        = form.submit '絞り込む'
-
-    table
+    table.mx-auto.mt-4.text-center
       thead
         tr
           th = Room.human_attribute_name(:name)
